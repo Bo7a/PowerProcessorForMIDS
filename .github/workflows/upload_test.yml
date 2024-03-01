@@ -12,9 +12,9 @@ jobs:
   process_file: 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: ls  # Check directory contents
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: uploaded-file 
           path: uploaded_file.txt  
