@@ -13,10 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3 
-      - uses: actions/download-artifact@v3 
+      - uses: actions/upload-artifact@v3 # Upload the JSON for later use
         with:
-          name: power-data-artifact 
-          path: /tmp/input_data       
+          name: power-data-artifact  
+          path: /tmp/input_data/input.json  # Choose a storage location 
+      - uses: actions/download-artifact@v3 # Download for processing
+        with:
+          name: power-data-artifact  
+          path: /tmp/input_data
       - uses: actions/setup-python@v3
         with:
           python-version: '3.x' 
@@ -26,4 +30,4 @@ jobs:
         with:
           name: processed-data 
           path: /tmp/output.txt 
-          retention-days: 1
+          retention-days: 1 
