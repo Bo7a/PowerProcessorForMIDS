@@ -16,4 +16,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: uploaded-file 
-          path: /tmp/uploaded_data/uploaded_file.txt  
+          path: uploaded_file.txt  
