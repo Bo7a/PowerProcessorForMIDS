@@ -1,0 +1,28 @@
+name: Process Power Data
+
+on:
+  workflow_dispatch:
+    inputs:
+      json_file:
+        description: 'JSON file containing power data'
+        required: true
+        type: file 
+
+jobs:
+  process-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3 
+      - uses: actions/download-artifact@v3 
+        with:
+          name: power-data-artifact  # Artifact name to download
+          path: /tmp/input_data        # Download to a temporary directory
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.x' 
+      - run: pip install -r requirements.txt  # Assuming any dependencies
+      - run: python process_power.py /tmp/input_data/input.json -o /tmp/output.txt 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: processed-data
+          path: /tmp/output.txt
