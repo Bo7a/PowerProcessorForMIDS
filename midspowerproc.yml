@@ -26,4 +26,5 @@ jobs:
         with:
           name: processed-data 
           path: /tmp/output.txt 
-          retention-days: 1 # Adjust how long the file is available for download
+          retention-days: 1 
+
