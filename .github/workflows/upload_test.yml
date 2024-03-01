@@ -9,11 +9,12 @@ on:
         type: file
 
 jobs:
-  process_file:  
+  process_file: 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: ls  # Check directory contents
       - uses: actions/upload-artifact@v3
         with:
-          name: my_file 
+          name: uploaded-file 
           path: uploaded_file.txt  
