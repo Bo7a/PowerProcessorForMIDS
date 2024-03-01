@@ -1,0 +1,19 @@
+name: Simple File Upload
+
+on:
+  workflow_dispatch:
+    inputs:
+      my_file: 
+        description: 'The file to upload'
+        required: true
+        type: file
+
+jobs:
+  process_file:  
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/upload-artifact@v3
+        with:
+          name: uploaded-file 
+          path: /tmp/uploaded_data/uploaded_file.txt  
