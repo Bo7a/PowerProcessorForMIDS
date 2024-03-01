@@ -6,21 +6,20 @@ on:
       json_file:
         description: 'JSON file containing power data'
         required: true
-        type: file 
 
 jobs:
   process-data:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3 
-      - uses: actions/upload-artifact@v3 
+      - uses: actions/checkout@v4 
+      - uses: actions/upload-artifact@v4 
         with:
           name: power-data-artifact  
-          path: /tmp/input_data/input.json
-      - uses: actions/download-artifact@v3 
+          path: uploaded_file.txt
+      - uses: actions/download-artifact@v4 
         with:
           name: power-data-artifact  
-          path: /tmp/input_data 
+          path: uploaded_file.txt 
       - uses: actions/setup-python@v3
         with:
           python-version: '3.x' 
