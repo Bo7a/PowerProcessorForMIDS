@@ -6,7 +6,6 @@ on:
       json_file:
         description: 'JSON file containing power data'
         required: true
-        type: file 
 
 jobs:
   process-data:
