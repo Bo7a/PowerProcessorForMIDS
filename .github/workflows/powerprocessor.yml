@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       json_file:
-        description: 'MIDs .mbd build file'
+        description: 'JSON file containing power data'
         required: true
         type: file 
 
@@ -15,8 +15,8 @@ jobs:
       - uses: actions/checkout@v3 
       - uses: actions/download-artifact@v3 
         with:
-          name: power-data-artifact  
-          path: /tmp/input_data        
+          name: power-data-artifact 
+          path: /tmp/input_data       
       - uses: actions/setup-python@v3
         with:
           python-version: '3.x' 
@@ -26,4 +26,4 @@ jobs:
         with:
           name: processed-data 
           path: /tmp/output.txt 
-          retention-days: 1 # Adjust how long the file is available for download
+          retention-days: 1
