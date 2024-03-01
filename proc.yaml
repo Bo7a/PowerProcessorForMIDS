@@ -15,14 +15,15 @@ jobs:
       - uses: actions/checkout@v3 
       - uses: actions/download-artifact@v3 
         with:
-          name: power-data-artifact  # Artifact name to download
-          path: /tmp/input_data        # Download to a temporary directory
+          name: power-data-artifact  
+          path: /tmp/input_data        
       - uses: actions/setup-python@v3
         with:
           python-version: '3.x' 
-      - run: pip install -r requirements.txt  # Assuming any dependencies
+      - run: pip install -r requirements.txt 
       - run: python process_power.py /tmp/input_data/input.json -o /tmp/output.txt 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3 
         with:
-          name: processed-data
-          path: /tmp/output.txt
+          name: processed-data 
+          path: /tmp/output.txt 
+          retention-days: 1 # Adjust how long the file is available for download
